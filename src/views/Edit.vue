@@ -77,8 +77,20 @@ export default {
   },
   created() {
     const taskId = this.$route.params.taskId
-    this.task.name = this.showTodos[taskId].name
-    this.task.category = this.showTodos[taskId].category
+    if(this.showTodos[taskId]){
+      this.task.name = this.showTodos[taskId].name
+      this.task.category = this.showTodos[taskId].category
+    }
+    else{
+      Swal.fire({
+          title: `Todo with taskId: ${taskId} is not found!`,
+          type: 'warning',
+          showConfirmButton: true,
+          confirmButtonText: 'Ok',
+      }).then(()=>{
+        this.$router.back()
+      })
+    }
   },
   methods: {
     goBack() {
