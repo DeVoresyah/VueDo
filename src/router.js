@@ -27,6 +27,11 @@ export default new Router({
       component: () => import('./views/Create')
     },
     {
+      path: '/create-category',
+      name: 'create-category',
+      component: () => import('./views/CreateCategory')
+    },
+    {
       path: '/edit/:taskId',
       name: 'edit',
       component: () => import('./views/Edit')
