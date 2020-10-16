@@ -123,6 +123,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import Swal from 'sweetalert2'
 
 export default {
   name: 'home',
@@ -175,7 +176,23 @@ export default {
       this.$router.push({ path: 'create' })
     },
     removeTask(index) {
-      this.$store.commit('removeTask', index)
+      Swal.fire({
+          title: 'Are you sure to delete this todo ?',
+          type: 'question',
+          showConfirmButton: true,
+          confirmButtonText: 'Ok',
+          showCancelButton: true,
+          cancelButtonText: 'No'
+      }).then((result)=>{
+        if(result.value){
+          this.$store.commit('removeTask', index)
+          Swal.fire({
+            title: 'todo deleted successfully',
+            type: 'success',
+            showConfirmButton: 'Ok'
+          })
+        }
+      })
     },
     editTask(index) {
       this.$router.push({path:`/edit/${index}`})
