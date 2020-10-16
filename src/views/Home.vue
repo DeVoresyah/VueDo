@@ -11,7 +11,10 @@
               </div>
               <div class="flex-sm-00-auto mt-3 mt-sm-0 ml-sm-3">
                   <span class="d-inline-block" data-toggle="appear" data-timeout="350">
-                    <a class="btn btn-success px-4 py-2" data-toggle="click-ripple" href="javascript:void(0)" @click="createTask">
+                    <a class="btn btn-success px-4 py-2 ml-2" data-toggle="click-ripple" href="javascript:void(0)" @click="createCategory">
+                      <i class="fa fa-fw fa-plus mr-1"></i> New Category
+                    </a>
+                    <a class="btn btn-success px-4 py-2 ml-2" data-toggle="click-ripple" href="javascript:void(0)" @click="createTask">
                       <i class="fa fa-plus mr-1"></i> New Task
                     </a>
                   </span>
@@ -173,6 +176,9 @@ export default {
   methods: {
     createTask() {
       this.$router.push({ path: 'create' })
+    },
+    createCategory(){
+      this.$router.push({ path: 'create-category' })
     },
     removeTask(index) {
       this.$store.commit('removeTask', index)
