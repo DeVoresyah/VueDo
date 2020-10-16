@@ -14,7 +14,8 @@ export default new Vuex.Store({
     task: {
       name: '',
       category: ''
-    }
+    },
+    categoryName: ''
   },
   getters: {
     showTodos: (state, getters) => {
@@ -31,6 +32,9 @@ export default new Vuex.Store({
     },
     taskCategory: (state, getters) => {
       return state.task.category
+    },
+    showCategoryName: (state, getters) => {
+      return state.categoryName
     }
   },
   actions: {
@@ -48,6 +52,7 @@ export default new Vuex.Store({
         name: '',
         category: ''
       }
+      state.categoryName = ''
     },
     createTask: (state, payload) => {
       state.todos.push(payload)
@@ -57,6 +62,12 @@ export default new Vuex.Store({
     },
     updateTask: (state, payload) => {
       state.todos = payload
+    },
+    categoryName: (state, payload) => {
+      state.categoryName = payload
+    },
+    createCategory: (state, payload) => {
+      state.categories.push(payload)
     }
   },
 })
